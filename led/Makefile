@@ -1,5 +1,6 @@
 CC = avr-gcc
-CFLAGS = -nostdinc -fno-builtin -nostdlib -mmcu=atmega328p -DF_CPU=16000000UL -Os
+PLATFORM = atmega328p
+CFLAGS = -nostdinc -fno-builtin -nostdlib -mmcu=$(PLATFORM) -DF_CPU=16000000UL -Os
 
 all : led.hex
 
@@ -16,7 +17,7 @@ led.hex : led.bin
 	avr-objcopy -O ihex -R .eeprom led.bin led.hex
 
 burn:
-	sudo avrdude -F -V -c arduino -p ATMEGA328P -P /dev/ttyACM0 -b 115200 -U flash:w:led.hex
+	sudo avrdude -F -V -c arduino -p $(PLATFORM) -P /dev/ttyACM0 -b 115200 -U flash:w:led.hex
 
 lst:
 	avr-objdump -Dx led.elf > led.lst
