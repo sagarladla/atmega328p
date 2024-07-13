@@ -1,6 +1,6 @@
-CC = avr-gcc
-PLATFORM = atmega328p
-CFLAGS = -nostdinc -fno-builtin -nostdlib -mmcu=$(PLATFORM) -DF_CPU=16000000UL -Os
+CC := avr-gcc
+PLATFORM := atmega328p
+CFLAGS := -nostdinc -fno-builtin -nostdlib -mmcu=$(PLATFORM) -DF_CPU=16000000UL -Os
 
 all : led.hex
 
